@@ -14,7 +14,7 @@ const FeaturedRecipes = () => {
 </button>
 
         </div>
-    </div>
+    </div> 
   )
 }
 
