@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  /* width: 100dvw; */
+  overflow-x: hidden;
+  background-color: #dfdff0;
+  font-family: "General Sans", sans-serif;
+}
+@layer utilities {
+   .bg-hero {
+   @apply bg-[url('./assets/recipe-bg.png')] bg-cover bg-center 
+  
+  }
+  .flex-hero{
+    @apply flex justify-center items-center
+  }
+} 
