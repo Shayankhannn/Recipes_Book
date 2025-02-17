@@ -12,7 +12,7 @@ const Initialrecipes = [
       ],
       instructions:
         'Cook spaghetti in salted water. Fry pancetta until crispy. Beat eggs and mix with grated Parmesan. Combine everything, season, and serve immediately.',
-      image: '/assets/spaghetti.jpg',
+      image: 'https://cdn.sanity.io/images/cq7w2e71/production/08ae0b8293235129bbe7d55a3f89c2fc4f1a36d7-973x1300.jpg',
     },
     {
       id: 2,
@@ -27,7 +27,7 @@ const Initialrecipes = [
       ],
       instructions:
         'Toast the bread. Mash avocado with salt, pepper, and lemon juice. Spread on toast and top with red pepper flakes.',
-      image: '/assets/avocado-toast.jpg',
+      image: 'https://www.rootsandradishes.com/wp-content/uploads/2017/08/avocado-toast-with-everything-bagel-seasoning-feat.jpg',
     },
     {
       id: 3,
@@ -42,7 +42,7 @@ const Initialrecipes = [
       ],
       instructions:
         'Slice grilled chicken. Toss all ingredients in a bowl. Drizzle with olive oil and balsamic vinegar.',
-      image: '/assets/grilled-chicken-salad.jpg',
+      image: 'https://somuchfoodblog.com/wp-content/uploads/2022/07/chicken-green-salad4.jpg',
     },
     {
       id: 4,
@@ -59,7 +59,7 @@ const Initialrecipes = [
       ],
       instructions:
         'Mix flour, milk, egg, sugar, and baking powder. Cook pancakes on a buttered pan. Serve with maple syrup.',
-      image: '/assets/pancakes.jpg',
+      image: 'https://www.acouplecooks.com/wp-content/uploads/2024/08/Brown-Butter-Pancakes-0002.jpg',
     },
     {
       id: 5,
@@ -74,7 +74,7 @@ const Initialrecipes = [
       ],
       instructions:
         'Sauté garlic in butter. Add shrimp and cook until pink. Drizzle with lemon juice and garnish with parsley.',
-      image: '/assets/garlic-butter-shrimp.jpg',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDrly8Xk3KCfWTy2Rwls2tsrtbUAK52RYYZg&s',
     },
     {
       id: 6,
@@ -90,7 +90,7 @@ const Initialrecipes = [
       ],
       instructions:
         'Mix all ingredients into a dough. Scoop onto a baking sheet. Bake at 180°C for 12-15 minutes.',
-      image: '/assets/cookies.jpg',
+      image: 'https://familycookierecipes.com/wp-content/uploads/2022/12/Best-Chocolate-Chip-Cookies-19.jpg',
     },
   ];
   
