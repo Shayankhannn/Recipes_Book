@@ -108,7 +108,7 @@ const Initialrecipes = [
     author: 'Emily Davis',
     authorImage: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png', // Example author image
     date: '2025-02-14',
-    views: 250,
+    views: 250, 
     ingredients: [
       '1 cup flour',
       '1/2 cup sugar',
