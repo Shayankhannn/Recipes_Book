@@ -1,4 +1,5 @@
 import { FaEye } from "react-icons/fa"
+import { formatDate } from "../lib/data"
 
 
 const RecipeCard = ({recipe:{description, image, title, author, authorImage, date, views,category}}) => {
@@ -7,7 +8,7 @@ const RecipeCard = ({recipe:{description, image, title, author, authorImage, dat
     <li className="featured-card group">
 <div className="flex-between">
     <p className="featured_card_date">
-        {date}
+        {formatDate(date)}
     </p>
     
     <div className="flex gap-1.5">
