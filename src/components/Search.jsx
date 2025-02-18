@@ -1,15 +1,17 @@
 import { FaSearch } from "react-icons/fa"
 
-const Search = () => {
-  return (
-    <div >
-        <label  className="flex-hero gap-2 relative border rounded-full px-5 py-2 mt-10 mx-4">
+const Search = ({setSearchQuery}) => {
 
-      <input type="text" placeholder="Search for recipes" className="w-full h-[33px] rounded-full bg-transparent outline-none text-gray-300 text-lg     "/>
-      <FaSearch className=" text-[20px] text-gray-300"/>
+
+  return (
+    <div  className="">
+        <label  className="flex-hero gap-2 relative border border-black-200 rounded-full px-8 py-2  mx-4">
+
+      <input type="text" onChange={(e) => setSearchQuery(e.target.value)}  placeholder="Search By Title or Author" className="w-full h-[33px] rounded-md bg-transparent outline-none text-primary text-lg     "/>
+      <FaSearch className=" text-[20px] text-primary"/>
         </label>
     </div>
   )
 }
-// absolute right-5
+
 export default Search

@@ -9,6 +9,7 @@ const RecipeCard = ({recipe:{description, image, title, author, authorImage, dat
     <p className="featured_card_date">
         {date}
     </p>
+    
     <div className="flex gap-1.5">
         <FaEye className="size-6 text-primary" />
         <span className="font-medium text-[16px] text-black">{views}</span>

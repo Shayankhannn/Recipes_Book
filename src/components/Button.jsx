@@ -22,7 +22,7 @@ const Button = () => {
     >
       {/* Glowing Effect */}
       <motion.div 
-        className="absolute glow-border w-full h-full rounded-full border-[3px] border-[#508D4E] opacity-0"
+        className="absolute glow-border w-full h-full rounded-full border-[1px] border-[#508D4E] opacity-0"
       ></motion.div>
 
       <motion.button

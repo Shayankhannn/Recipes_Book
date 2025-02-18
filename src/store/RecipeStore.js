@@ -9,6 +9,7 @@ const loadRecipe = () => {
 
 const useRecipeStore = create((set)=>({
     recipes: loadRecipe(),
+   
 
     addRecipe: (recipe) => 
         set((state)=> {
