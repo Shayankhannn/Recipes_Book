@@ -1,6 +1,7 @@
 
 import useRecipeStore from '../store/RecipeStore'
 import Button from './Button'
+import RecipeCard from './RecipeCard'
 
 const FeaturedRecipes = () => {
     const {recipes} = useRecipeStore()
@@ -21,10 +22,15 @@ const FeaturedRecipes = () => {
 <Button onClick={() => {}}>Add Recipe</Button>
 
         </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-5">
-              {recipes && }
-            </div>
-
+           
+            <ul className="mt-7 card_grid">
+      { recipes?.length > 0 ?  recipes.map((recipe) => (
+        <RecipeCard recipe={recipe} key={recipe.id} />
+      )) : (
+        <p className="no-results font-semibold text-2xl text-red-600">No Results Were Found! 😥</p>
+        
+        )}
+      </ul>
     </section> 
   )
 }

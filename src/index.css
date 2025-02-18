@@ -5,7 +5,7 @@
 body {
   /* width: 100dvw; */
   overflow-x: hidden;
-  background-color: #C9DABF	;
+  background-color: #D6EFD8 	;
   font-family: "General Sans", sans-serif;
 }
 
@@ -16,20 +16,45 @@ body {
   background-color: #dfdff0;
 }
 ::-webkit-scrollbar-thumb{
-  background-color: #808080;
+  background-color: #D6EFD8;
   border-radius: 10px;
 }
 
 @layer utilities {
    .bg-hero {
-   @apply bg-[url('./assets/recipe-bg.png')] bg-cover bg-center 
+   @apply bg-[url('./assets/recipe-bg.png')] bg-bg bg-cover bg-center 
   
   }
   .flex-hero{
     @apply flex justify-center items-center
   }
-  .featured-card {
-    @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] hover:border-[#e0e0e0]   transition-all duration-500 ;
+  
+  .card_grid {
+    @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5 p-5;
   }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .featured-card {
+    @apply bg-white border-[5px] border-black py-6 px-5 shadow-black rounded-[22px] shadow-200 hover:border-[#20591E] transition-all duration-500 hover:shadow-300 hover:bg-bg;
+  }
+
+  .featured-card_date {
+    @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-full group-hover:bg-white-100;
+  }
+
+  .featured-card_desc {
+    @apply font-normal text-[16px] line-clamp-2 my-3 text-black-100 break-all;
+  }
+
+  .featured-card_img {
+    @apply w-full h-[164px] rounded-[10px] object-cover;
+  }
+
+  .featured-card_btn {
+    @apply rounded-full bg-black-200 font-medium text-[16px] text-white px-5 py-2 !important;
+  }
+
 
 } 

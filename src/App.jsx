@@ -7,7 +7,7 @@ const App = () => {
     <div className="overflow-hidden">
       <Hero/>
       <FeaturedRecipes/>
-
+e
     </div>
   )
 }
