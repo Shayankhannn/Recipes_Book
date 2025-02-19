@@ -1,11 +1,12 @@
 
 
-import React, { useState, useEffect, useRef } from 'react';
+import  { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { FaTimes } from 'react-icons/fa';
+import { formatDate } from '../lib/data';
 
-const RecipeModal = ({ recipe, closeModal,isOpen }) => {
+const RecipeModal = ({  closeModal,isOpen,openEditModal,defaultRecipeImage,defaultAuthorImage,recipe:{description, image, title, author, authorImage, date, views,category,ingredients,instructions} }) => {
   const modalRef = useRef(null);
   const imageRef = useRef(null);
   const [activeSection, setActiveSection] = useState('ingredients');
@@ -100,7 +101,7 @@ const RecipeModal = ({ recipe, closeModal,isOpen }) => {
           <div
           onClick={(e) => e.stopPropagation()}
             ref={modalRef}
-            className="relative bg-[#e6eedc] m-4 rounded-3xl shadow-lg w-full max-w-5xl overflow-hidden flex flex-col md:flex-row max-h-[75vh] lg:max-h-[90vh] "
+            className="relative bg-[#e6eedc] m-4 rounded-3xl shadow-lg w-full max-w-5xl overflow-hidden flex flex-col md:flex-row max-h-[75vh] lg:max-h-[90vh] overflow-y-auto"
             style={{ fontFamily: 'Poppins, sans-serif' }}
           >
             <button onClick={closeModal} className="absolute top-4 right-4 text-gray-700 hover:text-gray-900 text-3xl   z-10">
@@ -112,19 +113,19 @@ const RecipeModal = ({ recipe, closeModal,isOpen }) => {
 
             <div className="md:w-1/2 w-full" ref={imageRef}>
               <img
-                src={recipe.image}
-                alt={recipe.title}
-                className="w-full h-full object-cover rounded-t-3xl md:rounded-l-3xl md:rounded-t-none" // object-cover for full width
+                src={image || defaultRecipeImage}    onError={(e) => (e.target.src = defaultRecipeImage)}
+                alt={title}
+                className="w-full h-[200px] lg:h-full md:h-full object-cover rounded-t-3xl md:rounded-l-3xl md:rounded-t-none" // object-cover for full width
               />
             </div>
 
             <div className="md:w-1/2 w-full p-6 md:p-8 overflow-y-scroll scrollbar-hide">
-              <h2 className="text-4xl font-bold mb-4 text-gray-800">{recipe.title}</h2>
+              <h2 className="text-4xl font-bold mb-4 text-gray-800">{title}</h2>
               <div className="flex items-center mb-6 text-sm text-gray-600">
-                <img src={recipe.authorImage} alt={recipe.author} className="w-10 h-10 rounded-full mr-3" />
-                <span>By {recipe.author} | {recipe.date} | {recipe.views} views</span>
+                <img src={authorImage || defaultAuthorImage}   onError={(e) => (e.target.src = defaultAuthorImage)} alt={author} className="w-10 h-10 rounded-full mr-3" />
+                <span>By {author} | {formatDate(date) } | {views} views</span>
               </div>
-              <p className="text-gray-700 mb-6">{recipe.description}</p>
+              <p className="text-gray-700 mb-6">{description}</p>
 
               <div className="flex space-x-4 mb-4">
                 <button
@@ -144,7 +145,7 @@ const RecipeModal = ({ recipe, closeModal,isOpen }) => {
               <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="exit">
                 {activeSection === 'ingredients' && (
                   <motion.div className="flex flex-wrap gap-2" variants={itemVariants}>
-                    {recipe.ingredients.map((ingredient, index) => (
+                    {ingredients.map((ingredient, index) => (
                       <motion.div key={index} className="bg-[#c1dbbd] rounded-full px-3 py-1 text-sm text-gray-800 flex items-center hover:scale-105 transition-transform cursor-pointer" whileTap={{ scale: 0.95 }}>
                         <span className="text-lg">{getEmoji(ingredient)}</span> {/* Larger emoji */}
                         <span className="ml-2">{ingredient}</span>
@@ -154,14 +155,14 @@ const RecipeModal = ({ recipe, closeModal,isOpen }) => {
                 )}
                 {activeSection === 'instructions' && (
                   <motion.div className="text-gray-700 whitespace-pre-line" variants={itemVariants}>
-                    {recipe.instructions}
+                    {instructions}
                   </motion.div>
                 )}
               </motion.div>
 
               <div className="mt-4 flex justify-end space-x-2">
                 <motion.button
-                //   onClick={onUpdate}
+                  onClick={openEditModal}
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-transform hover:scale-105 active:scale-100"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

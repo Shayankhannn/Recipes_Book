@@ -16,9 +16,17 @@ const FeaturedRecipes = () => {
   const [views, setViews] = useState(1);
   const [openDetailModal, setOpenDetailModal] = useState(false);
   const {recipes,addRecipe,updateRecipe} = useRecipeStore();
+  
+  const defaultRecipeImage = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+  const defaultAuthorImage = "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg";
+
+  
+
   const filteredRecipes = recipes.filter(recipe =>
      recipe.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
      recipe.author.toLowerCase().includes(searchQuery.toLowerCase()));
+
+
 
      const openAddModal = () => {
       setModalOpen(true);
@@ -70,7 +78,7 @@ const FeaturedRecipes = () => {
         </div>
             <ul className="mt-7 card_grid">
       { filteredRecipes.length > 0 ?  filteredRecipes.map((recipe) => (
-        <RecipeCard recipe={recipe} key={recipe.id} handleDetailModal={() => handleDetailModal(recipe)} openEditModal={() => openEditModal(recipe)} />
+        <RecipeCard recipe={recipe} key={recipe.id} handleDetailModal={() => handleDetailModal(recipe)} defaultRecipeImage={defaultRecipeImage} defaultAuthorImage={defaultAuthorImage}  />
       )) : (
         <p className="no-results font-semibold text-2xl text-red-600">No Results Were Found! 😥</p>
         
@@ -93,6 +101,9 @@ const FeaturedRecipes = () => {
   isOpen={openDetailModal}
   closeModal={() => setOpenDetailModal(false)}
   recipe={selectedRecipe}
+  openEditModal={() => openEditModal(selectedRecipe)} 
+  defaultRecipeImage={defaultRecipeImage}
+   defaultAuthorImage={defaultAuthorImage} 
   />
 ) }
   

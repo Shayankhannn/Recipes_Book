@@ -106,7 +106,7 @@ const Initialrecipes = [
     id: 6,
     title: 'Chocolate Chip Cookies',
     author: 'Emily Davis',
-    authorImage: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png', // Example author image
+    authorImage: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png', 
     date: '2025-02-14',
     views: 250, 
     ingredients: [

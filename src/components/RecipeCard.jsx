@@ -2,9 +2,9 @@ import { FaEye } from "react-icons/fa"
 import { formatDate } from "../lib/data"
 
 
-const RecipeCard = ({handleDetailModal,recipe:{description, image, title, author, authorImage, date, views,category}}) => {
+const RecipeCard = ({handleDetailModal,defaultAuthorImage,defaultRecipeImage,recipe:{description, image, title, author, authorImage, date, views,category}}) => {
    
-  return (
+    return (
     <li className="featured-card group">
 <div className="flex-between">
     <p className="featured_card_date">
@@ -26,13 +26,13 @@ const RecipeCard = ({handleDetailModal,recipe:{description, image, title, author
         </a>
     </div>
     <a href="">
-    <img src={authorImage}
+    <img src={authorImage || defaultAuthorImage}   onError={(e) => (e.target.src = defaultAuthorImage)}
             alt="author" width={48} height={48} className="rounded-full" />
     </a>
 </div>
 <a  href="">
 <p className="featured-card_desc">{description}</p>
-<img src={image} alt="image" className="featured-card_img" />
+<img src={image || defaultRecipeImage}    onError={(e) => (e.target.src = defaultRecipeImage)} alt="image" className="featured-card_img" />
 </a>
 <div className="flex-between gap-3 mt-5">
     <div className="">
