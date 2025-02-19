@@ -100,7 +100,7 @@ const RecipeModal = ({ recipe, closeModal,isOpen }) => {
           <div
           onClick={(e) => e.stopPropagation()}
             ref={modalRef}
-            className="relative bg-[#e6eedc] m-4 rounded-3xl shadow-lg w-full max-w-5xl overflow-hidden flex flex-col md:flex-row max-h-[75vh] lg:max-h-[90vh] overflow-y-scroll"
+            className="relative bg-[#e6eedc] m-4 rounded-3xl shadow-lg w-full max-w-5xl overflow-hidden flex flex-col md:flex-row max-h-[75vh] lg:max-h-[90vh] "
             style={{ fontFamily: 'Poppins, sans-serif' }}
           >
             <button onClick={closeModal} className="absolute top-4 right-4 text-gray-700 hover:text-gray-900 text-3xl   z-10">
@@ -118,7 +118,7 @@ const RecipeModal = ({ recipe, closeModal,isOpen }) => {
               />
             </div>
 
-            <div className="md:w-1/2 w-full p-6 md:p-8">
+            <div className="md:w-1/2 w-full p-6 md:p-8 overflow-y-scroll scrollbar-hide">
               <h2 className="text-4xl font-bold mb-4 text-gray-800">{recipe.title}</h2>
               <div className="flex items-center mb-6 text-sm text-gray-600">
                 <img src={recipe.authorImage} alt={recipe.author} className="w-10 h-10 rounded-full mr-3" />
