@@ -5,12 +5,16 @@ import Button from './Button'
 import RecipeCard from './RecipeCard'
 import Search from './Search'
 import FormRecipeModal from './FormRecipeModal'
+import { formatDate } from '../lib/data'
+import DetailRecipeModal from './DetailRecipeModal'
 
 const FeaturedRecipes = () => {
   const [searchQuery,setSearchQuery] = useState('');  
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [modalMode, setModalMode] = useState('add');
+  const [views, setViews] = useState(1);
+  const [openDetailModal, setOpenDetailModal] = useState(false);
   const {recipes,addRecipe,updateRecipe} = useRecipeStore();
   const filteredRecipes = recipes.filter(recipe =>
      recipe.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -20,20 +24,36 @@ const FeaturedRecipes = () => {
       setModalOpen(true);
       setModalMode('add');
       setSelectedRecipe(null);
+      
      }
      const openEditModal = (recipe) => {
       setModalOpen(true);
       setModalMode('edit');
       setSelectedRecipe(recipe);
      }
+     
+    
 
     const handleSave = (formData)=>{
+      const updatedFormData = {
+        ...formData,
+        date:  formatDate(new Date()), 
+        views: views,
+      };
+
       if(modalMode === 'add'){
-        addRecipe(formData);
+        updatedFormData.views = 1;
+        addRecipe(updatedFormData);
       }else{
-        updateRecipe(selectedRecipe.id, formData);
+        updateRecipe(selectedRecipe.id, updatedFormData);
       }
     }
+
+    const handleDetailModal = (recipe) => {
+      setViews(recipe.views + 1);
+      setSelectedRecipe(recipe);
+      setOpenDetailModal(true);
+     }
 
   return (
     <section className='mt-10'>
@@ -50,7 +70,7 @@ const FeaturedRecipes = () => {
         </div>
             <ul className="mt-7 card_grid">
       { filteredRecipes.length > 0 ?  filteredRecipes.map((recipe) => (
-        <RecipeCard recipe={recipe} key={recipe.id} openEditModal={() => openEditModal(recipe)} />
+        <RecipeCard recipe={recipe} key={recipe.id} handleDetailModal={() => handleDetailModal(recipe)} openEditModal={() => openEditModal(recipe)} />
       )) : (
         <p className="no-results font-semibold text-2xl text-red-600">No Results Were Found! 😥</p>
         
@@ -66,6 +86,15 @@ const FeaturedRecipes = () => {
       />
 
 )}
+
+
+{openDetailModal && (
+  <DetailRecipeModal 
+  isOpen={openDetailModal}
+  closeModal={() => setOpenDetailModal(false)}
+  recipe={selectedRecipe}
+  />
+) }
   
     </section> 
 

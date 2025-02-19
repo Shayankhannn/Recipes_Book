@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { BiPlus } from "react-icons/bi";
 
 
-const Button = () => {
+const Button = ({onClick}) => {
   const handleHover = () => {
     gsap.to(".glow-border", { opacity: 1, scale: 1.2, duration: 0.4, ease: "power3.out" });
   };
@@ -31,12 +31,14 @@ const Button = () => {
         whileTap={{ scale: 0.9 }}
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
+        onClick={onClick}
        
       >
         <motion.span
           className="plus-icon"
           initial={{ rotate: 0 }}
           whileHover={{ rotate: 90 }}
+         
         >
           <BiPlus size={22} />
         </motion.span>

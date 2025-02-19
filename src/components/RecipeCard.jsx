@@ -2,7 +2,7 @@ import { FaEye } from "react-icons/fa"
 import { formatDate } from "../lib/data"
 
 
-const RecipeCard = ({openEditModal,recipe:{description, image, title, author, authorImage, date, views,category}}) => {
+const RecipeCard = ({handleDetailModal,recipe:{description, image, title, author, authorImage, date, views,category}}) => {
    
   return (
     <li className="featured-card group">
@@ -40,7 +40,7 @@ const RecipeCard = ({openEditModal,recipe:{description, image, title, author, au
     <p className=" text-primary font-medium text-[16px] ">{category}</p>
     </a>
     </div>
-    <button className="featured-card_btn " onClick={openEditModal}>
+    <button className="featured-card_btn " onClick={handleDetailModal}>
     
     Details
     
