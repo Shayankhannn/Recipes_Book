@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { FaTimes } from 'react-icons/fa';
 import { formatDate } from '../lib/data';
 
-const RecipeModal = ({  closeModal,isOpen,openEditModal,defaultRecipeImage,defaultAuthorImage,recipe:{description, image, title, author, authorImage, date, views,category,ingredients,instructions} }) => {
+const RecipeModal = ({ handleDelete, closeModal,isOpen,openEditModal,defaultRecipeImage,defaultAuthorImage,recipe:{description, image, title, author, authorImage, date, views,category,ingredients,instructions} }) => {
   const modalRef = useRef(null);
   const imageRef = useRef(null);
   const [activeSection, setActiveSection] = useState('ingredients');
@@ -174,6 +174,7 @@ const RecipeModal = ({  closeModal,isOpen,openEditModal,defaultRecipeImage,defau
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-transform hover:scale-105 active:scale-100"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={handleDelete}
                 >
                   Delete
                 </motion.button>

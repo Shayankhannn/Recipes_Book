@@ -5,7 +5,7 @@ import { formatDate } from "../lib/data"
 const RecipeCard = ({handleDetailModal,defaultAuthorImage,defaultRecipeImage,recipe:{description, image, title, author, authorImage, date, views,category}}) => {
    
     return (
-    <li className="featured-card group">
+    <li className="featured-card group " >
 <div className="flex-between">
     <p className="featured_card_date">
         {formatDate(date)}
@@ -18,27 +18,27 @@ const RecipeCard = ({handleDetailModal,defaultAuthorImage,defaultRecipeImage,rec
 </div>
 <div className="flex-between mt-5 gap-5">
     <div className="flex-1">
-        <a href="">
+        <div>
         <p className="text-16-medium line-clamp-1"><strong>By:</strong> {author}</p>
-        </a>
-        <a href="">
+        </div>
+        <div>
         <h3 className=" font-semibold text-[26px] text-black line-clamp-1">{title}</h3>
-        </a>
+        </div>
     </div>
-    <a href="">
+    <div>
     <img src={authorImage || defaultAuthorImage}   onError={(e) => (e.target.src = defaultAuthorImage)}
             alt="author" width={48} height={48} className="rounded-full" />
-    </a>
+    </div>
 </div>
-<a  href="">
+<div   >
 <p className="featured-card_desc">{description}</p>
 <img src={image || defaultRecipeImage}    onError={(e) => (e.target.src = defaultRecipeImage)} alt="image" className="featured-card_img" />
-</a>
+</div>
 <div className="flex-between gap-3 mt-5">
     <div className="">
-    <a href="">
+    <span >
     <p className=" text-primary font-medium text-[16px] ">{category}</p>
-    </a>
+    </span>
     </div>
     <button className="featured-card_btn " onClick={handleDetailModal}>
     

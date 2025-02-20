@@ -1,12 +1,13 @@
 
 import { useState } from 'react'
-import useRecipeStore from '../store/RecipeStore'
+import useRecipeStore, { ConfirmationDialog } from '../store/RecipeStore'
 import Button from './Button'
 import RecipeCard from './RecipeCard'
 import Search from './Search'
 import FormRecipeModal from './FormRecipeModal'
 import { formatDate } from '../lib/data'
 import DetailRecipeModal from './DetailRecipeModal'
+
 
 const FeaturedRecipes = () => {
   const [searchQuery,setSearchQuery] = useState('');  
@@ -15,7 +16,7 @@ const FeaturedRecipes = () => {
   const [modalMode, setModalMode] = useState('add');
   const [views, setViews] = useState(1);
   const [openDetailModal, setOpenDetailModal] = useState(false);
-  const {recipes,addRecipe,updateRecipe} = useRecipeStore();
+  const {recipes,addRecipe,updateRecipe,deleteRecipe} = useRecipeStore();
   
   const defaultRecipeImage = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
   const defaultAuthorImage = "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg";
@@ -38,6 +39,7 @@ const FeaturedRecipes = () => {
       setModalOpen(true);
       setModalMode('edit');
       setSelectedRecipe(recipe);
+      setOpenDetailModal(false);
      }
      
     
@@ -48,23 +50,57 @@ const FeaturedRecipes = () => {
         date:  formatDate(new Date()), 
         views: views,
       };
+      ConfirmationDialog({
+        title: `${modalMode === 'add' ? 'Add' : 'Update'} Recipe?`,
+        text: "This action cannot be undone!",
+        icon: `${modalMode === 'add' ? 'info' : 'warning'}`,
+        successText: `${modalMode === 'add' ? 'Recipe Added!' : 'Recipe Updated!'}`,
+        cancelText: `${modalMode === 'add' ? 'Addition cancelled!' : 'Update cancelled!'}`,
+        confirmButtonText: `${modalMode === 'add' ? 'Yes, Add it!' : 'Yes, Update it!'}`,
+        cancelButtonText: "Cancel",
+        onConfirm: () => {
+          if(modalMode === 'add'){
+            updatedFormData.views = 1;
+            
+            addRecipe(updatedFormData);
+          }else{
+            updateRecipe(selectedRecipe.id, updatedFormData);
+          }
+       
+        },
+      });
+    
+    
 
-      if(modalMode === 'add'){
-        updatedFormData.views = 1;
-        addRecipe(updatedFormData);
-      }else{
-        updateRecipe(selectedRecipe.id, updatedFormData);
-      }
     }
+
+    const handleDelete = (id) => {
+      ConfirmationDialog({
+        title: "Delete Recipe?",
+        text: "This action cannot be undone!",
+        icon: "warning",
+        successText: "Recipe Deleted!",
+        cancelText: "Deletion cancelled!",
+        confirmButtonText: "Yes, Delete it!",
+        cancelButtonText: "No, Keep it",
+        onConfirm: () => {
+          deleteRecipe(id);
+          setOpenDetailModal(false);
+        },
+      });
+    };
+    
 
     const handleDetailModal = (recipe) => {
       setViews(recipe.views + 1);
       setSelectedRecipe(recipe);
       setOpenDetailModal(true);
+      
      }
 
   return (
     <section className='mt-10'>
+      
         <div className="flex-hero !justify-between flex-col md:flex-row lg:flex-row gap-3 p-4 mb-5">
             <h1 className="lg:text-[40px] md:text-xl text-xl text-primary font-extrabold ">Featured Recipes</h1>
       
@@ -104,6 +140,7 @@ const FeaturedRecipes = () => {
   openEditModal={() => openEditModal(selectedRecipe)} 
   defaultRecipeImage={defaultRecipeImage}
    defaultAuthorImage={defaultAuthorImage} 
+   handleDelete={() => handleDelete(selectedRecipe.id)}
   />
 ) }
   

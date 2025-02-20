@@ -1,3 +1,5 @@
+
+
 const Initialrecipes = [
   {
     id: 1,
@@ -135,3 +137,4 @@ export function formatDate(date) {
     year: "numeric",
   })
 }
+

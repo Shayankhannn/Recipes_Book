@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify"
 import FeaturedRecipes from "./components/FeaturedRecipes"
 import Hero from "./components/Hero"
 
@@ -5,6 +6,7 @@ import Hero from "./components/Hero"
 const App = () => {
   return (
     <div className="overflow-hidden">
+      <ToastContainer />
       <Hero/>
       <FeaturedRecipes/>
 
