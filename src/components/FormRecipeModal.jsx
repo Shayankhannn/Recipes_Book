@@ -359,7 +359,7 @@ const FormRecipeModal = ({
         >
           <motion.div
             ref={modalRef}
-            className="bg-gradient-to-r from-primary via-secondary to-orange-300 m-5 p-8 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl relative scrollbar-hide" // Gradient background, larger max-width, more shadow
+            className="bg-gradient-to-r from-primary via-orange-300/[0.7] to-secondary m-5 p-8 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl relative scrollbar-hide" // Gradient background, larger max-width, more shadow
             onClick={(e) => e.stopPropagation()}
             style={{ fontFamily: "Montserrat, sans-serif" }}  Modern font
           >
