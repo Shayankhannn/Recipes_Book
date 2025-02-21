@@ -50,8 +50,8 @@ export const ConfirmationDialog = ({
     icon = "warning",
     confirmButtonText = "Yes",
     cancelButtonText = "No",
-    successText = "Success!",
-    cancelText = "Cancelled!",
+    ToastsuccessText = "Success!",
+    ToastcancelText = "Cancelled!",
     onConfirm, // Function to execute when confirmed
   }) => {
     Swal.fire({
@@ -77,9 +77,9 @@ export const ConfirmationDialog = ({
     }).then((result) => {
       if (result.isConfirmed) {
         if (onConfirm) onConfirm(); // Execute the function passed in props
-        toast.success(successText);
+        toast.success(ToastsuccessText);
       } else {
-        toast.error(cancelText);
+        toast.error(ToastcancelText);
       }
     });
   };

@@ -106,7 +106,7 @@
 //                    value={formData.title}
 //                    onChange={handleChange}
 //                    placeholder="Title of Your Recipe"
-//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-white-200 focus:outline-none focus:border-indigo-500 transition duration-300"
 //                    required
 //                  />
 //                </div>
@@ -125,7 +125,7 @@
 //                    onChange={handleChange}
 //                    rows={4}
 //                    placeholder="Recipe Description"
-//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-white-200 focus:outline-none focus:border-indigo-500 transition duration-300"
 //                    required
 //                  />
 //                </div>
@@ -144,7 +144,7 @@
 //                    onChange={handleChange}
 //                    rows={4}
 //                    placeholder="Recipe Instructions"
-//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-white-200 focus:outline-none focus:border-indigo-500 transition duration-300"
 //                    required
 //                  />
 //                </div>
@@ -165,7 +165,7 @@
 //                    onChange={handleChange}
 //                    rows={4}
 //                    placeholder="Recipe Ingredients (separated by commas and new lines)"
-//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-white-200 focus:outline-none focus:border-indigo-500 transition duration-300"
 //                    required
 //                  />
 //                </div>
@@ -184,7 +184,7 @@
 //                    onChange={handleChange}
 //                    name="image"
 //                    placeholder="Recipe Image"
-//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-white-200 focus:outline-none focus:border-indigo-500 transition duration-300"
 //                    required
 //                  />
 //                </div>
@@ -203,7 +203,7 @@
 //                    onChange={handleChange}
 //                    name="category"
 //                    placeholder=" eg: Lunch,Dinner,Breakfast etc.."
-//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-white-200 focus:outline-none focus:border-indigo-500 transition duration-300"
 //                    required
 //                  />
                
@@ -227,7 +227,7 @@
 //                    onChange={handleChange}
 //                    name="author"
 //                    placeholder="Your Name"
-//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-white-200 focus:outline-none focus:border-indigo-500 transition duration-300"
 //                    required
 //                  />
 //                </div>
@@ -247,7 +247,7 @@
 //                    value={formData.authorImage}
 //                    onChange={handleChange}
 //                    placeholder="Your  Image"
-//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+//                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-white-200 focus:outline-none focus:border-indigo-500 transition duration-300"
 //                  />
 //                </div>
 //                <div className="flex-between">
@@ -297,6 +297,7 @@ const FormRecipeModal = ({
     category: selectedRecipe?.category || "",
     ingredients: selectedRecipe?.ingredients || [],
     instructions: selectedRecipe?.instructions || "",
+    views: selectedRecipe?.views || 1,
   });
 
   const modalRef = useRef(null);
@@ -334,7 +335,8 @@ const FormRecipeModal = ({
 
     setFormData({
       ...formData,
-      [name]: name === "ingredients" ? value.split(/[\n,]+/).map((item) => item.trim()) : value,
+      // views: mode === "edit" ? selectedRecipe.views : 111,
+      [name]: name === "ingredients" ? value.split(/[\n,]+/).map((item) => item.trim())  : value,
     });
   };
 
@@ -357,7 +359,7 @@ const FormRecipeModal = ({
         >
           <motion.div
             ref={modalRef}
-            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 m-5 p-8 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl relative scrollbar-hide" // Gradient background, larger max-width, more shadow
+            className="bg-gradient-to-r from-primary via-secondary to-orange-300 m-5 p-8 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl relative scrollbar-hide" // Gradient background, larger max-width, more shadow
             onClick={(e) => e.stopPropagation()}
             style={{ fontFamily: "Montserrat, sans-serif" }}  Modern font
           >
@@ -385,13 +387,13 @@ const FormRecipeModal = ({
                     value={formData.title}
                     onChange={handleChange}
                     placeholder="Recipe Title"
-                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300" 
+                    className="border-2 border-green-300 rounded-lg py-3 px-4 w-full bg-transparent text-white placeholder-white-200 focus:outline-none focus:border-green-500 transition duration-300" 
                     required
                   />
                 </div>
                 <div >
                  <label
-                   className="block text-md font-medium text-black"
+                   className="block text-md font-medium text-white"
                    htmlFor="description"
                  >
                    Description
@@ -404,13 +406,13 @@ const FormRecipeModal = ({
                    onChange={handleChange}
                    rows={4}
                    placeholder="Recipe Description"
-                   className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+                   className="border-2 border-green-300 rounded-lg py-3 px-4 w-full bg-transparent text-white placeholder-white-200 focus:outline-none focus:border-green-500 transition duration-300" 
                    required
                  />
                </div>
                <div >
                  <label
-                   className="block text-md font-medium text-black"
+                   className="block text-md font-medium text-white"
                    htmlFor="instructions"
                  >
                    Recipe Instructions
@@ -423,14 +425,14 @@ const FormRecipeModal = ({
                    onChange={handleChange}
                    rows={4}
                    placeholder="Recipe Instructions"
-                    className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+                   className="border-2 border-green-300 rounded-lg py-3 px-4 w-full bg-transparent text-white placeholder-white-200 focus:outline-none focus:border-green-500 transition duration-300" 
                    required
                  />
                </div>
 
                <div >
                  <label
-                   className="block text-md font-medium text-black"
+                   className="block text-md font-medium text-white"
                    htmlFor="ingredients"
                  >
                    Recipe Ingredients{" "}
@@ -444,14 +446,14 @@ const FormRecipeModal = ({
                    onChange={handleChange}
                    rows={4}
                    placeholder="Recipe Ingredients (separated by commas and new lines)"
-                   className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+                   className="border-2 border-green-300 rounded-lg py-3 px-4 w-full bg-transparent text-white placeholder-white-200 focus:outline-none focus:border-green-500 transition duration-300" 
                    required
                  />
                </div>
 
                <div >
                  <label
-                   className="block text-md font-medium text-black"
+                   className="block text-md font-medium text-white"
                    htmlFor="image"
                  >
                    Image
@@ -463,14 +465,14 @@ const FormRecipeModal = ({
                    onChange={handleChange}
                    name="image"
                    placeholder="Recipe Image"
-                   className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+                   className="border-2 border-green-300 rounded-lg py-3 px-4 w-full bg-transparent text-white placeholder-white-200 focus:outline-none focus:border-green-500 transition duration-300" 
                    required
                  />
                </div>
 
                <div >
                  <label
-                   className="block text-md font-medium text-black"
+                   className="block text-md font-medium text-white"
                    htmlFor="category"
                  >
                    Category
@@ -482,19 +484,19 @@ const FormRecipeModal = ({
                    onChange={handleChange}
                    name="category"
                    placeholder=" eg: Lunch,Dinner,Breakfast etc.."
-                   className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+                   className="border-2 border-green-300 rounded-lg py-3 px-4 w-full bg-transparent text-white placeholder-white-200 focus:outline-none focus:border-green-500 transition duration-300" 
                    required
                  />
                
                </div>
 
-               <h2 className="text-left text-xl font-bold ">
+               <h2 className="text-left text-xl font-bold text-white">
                  Author Details :{" "}
                </h2>
 
                <div >
                  <label
-                   className="block text-md font-medium text-black"
+                   className="block text-md font-medium text-white"
                    htmlFor="author"
                  >
                    Your Name
@@ -506,14 +508,14 @@ const FormRecipeModal = ({
                    onChange={handleChange}
                    name="author"
                    placeholder="Your Name"
-                   className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+                   className="border-2 border-green-300 rounded-lg py-3 px-4 w-full bg-transparent text-white placeholder-white-200 focus:outline-none focus:border-green-500 transition duration-300" 
                    required
                  />
                </div>
 
                <div >
                  <label
-                   className="block text-md font-medium text-black"
+                   className="block text-md font-medium text-white"
                    htmlFor="authorImage"
                  >
                    {" "}
@@ -526,7 +528,7 @@ const FormRecipeModal = ({
                    value={formData.authorImage}
                    onChange={handleChange}
                    placeholder="Your  Image"
-                   className="border-2 border-gray-600 rounded-lg py-3 px-4 w-full bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition duration-300"
+                   className="border-2 border-green-300 rounded-lg py-3 px-4 w-full bg-transparent text-white placeholder-white-200 focus:outline-none focus:border-green-500 transition duration-300" 
                  />
                </div>
                
@@ -535,7 +537,7 @@ const FormRecipeModal = ({
               <div className="flex justify-center mt-8 space-x-6"> 
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-white text-indigo-700 font-bold rounded-xl hover:bg-indigo-100 hover:scale-105 transition duration-300 shadow-md" 
+                  className="px-6 py-3 bg-white text-green-700 font-bold rounded-xl hover:bg-indigo-100 hover:scale-105 transition duration-300 shadow-md" 
                 >
                   {mode === "edit" ? "Save Changes" : "Add Recipe"}
                 </button>

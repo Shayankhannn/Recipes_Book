@@ -14,7 +14,7 @@ const FeaturedRecipes = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [modalMode, setModalMode] = useState('add');
-  const [views, setViews] = useState(1);
+  // const [views, setViews] = useState(selectedRecipe?.views || 1);
   const [openDetailModal, setOpenDetailModal] = useState(false);
   const {recipes,addRecipe,updateRecipe,deleteRecipe} = useRecipeStore();
   
@@ -45,22 +45,26 @@ const FeaturedRecipes = () => {
     
 
     const handleSave = (formData)=>{
+      
       const updatedFormData = {
         ...formData,
         date:  formatDate(new Date()), 
-        views: views,
+        
+        
       };
+      
       ConfirmationDialog({
         title: `${modalMode === 'add' ? 'Add' : 'Update'} Recipe?`,
         text: "This action cannot be undone!",
         icon: `${modalMode === 'add' ? 'info' : 'warning'}`,
-        successText: `${modalMode === 'add' ? 'Recipe Added!' : 'Recipe Updated!'}`,
-        cancelText: `${modalMode === 'add' ? 'Addition cancelled!' : 'Update cancelled!'}`,
+        ToastsuccessText: `${modalMode === 'add' ? 'Recipe Added!' : 'Recipe Updated!'}`,
+        ToastcancelText: `${modalMode === 'add' ? 'Addition cancelled!' : 'Update cancelled!'}`,
         confirmButtonText: `${modalMode === 'add' ? 'Yes, Add it!' : 'Yes, Update it!'}`,
         cancelButtonText: "Cancel",
         onConfirm: () => {
           if(modalMode === 'add'){
-            updatedFormData.views = 1;
+           
+           
             
             addRecipe(updatedFormData);
           }else{
@@ -69,18 +73,17 @@ const FeaturedRecipes = () => {
        
         },
       });
-    
-    
 
-    }
+    };
 
     const handleDelete = (id) => {
+
       ConfirmationDialog({
         title: "Delete Recipe?",
         text: "This action cannot be undone!",
         icon: "warning",
-        successText: "Recipe Deleted!",
-        cancelText: "Deletion cancelled!",
+        ToastsuccessText: "Recipe Deleted!",
+        ToastcancelText: "Deletion cancelled!",
         confirmButtonText: "Yes, Delete it!",
         cancelButtonText: "No, Keep it",
         onConfirm: () => {
@@ -88,12 +91,15 @@ const FeaturedRecipes = () => {
           setOpenDetailModal(false);
         },
       });
+      
     };
     
 
     const handleDetailModal = (recipe) => {
-      setViews(recipe.views + 1);
-      setSelectedRecipe(recipe);
+      const updatedViews = (recipe.views || 0) + 1;
+      updateRecipe(recipe.id, { ...recipe, views: updatedViews });
+      // setSelectedRecipe(recipe);
+      setSelectedRecipe((prev) => ({ ...prev, ...recipe, views: updatedViews }));
       setOpenDetailModal(true);
       
      }

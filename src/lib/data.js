@@ -7,7 +7,7 @@ const Initialrecipes = [
     author: 'John Doe',
     authorImage: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png', // Example author image
     date: '2025-02-10',
-    views: 120,
+    views: 1,
     ingredients: [
       '200g spaghetti',
       '100g pancetta',
@@ -27,7 +27,7 @@ const Initialrecipes = [
     author: 'Jane Smith',
     authorImage: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png', // Example author image
     date: '2025-02-05',
-    views: 90,
+    views: 1,
     ingredients: [
       '1 avocado',
       '2 slices of whole-grain bread',
@@ -47,7 +47,7 @@ const Initialrecipes = [
     author: 'Mark Lee',
     authorImage: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png', // Example author image
     date: '2025-02-12',
-    views: 145,
+    views: 1,
     ingredients: [
       '1 grilled chicken breast',
       'Mixed greens',
@@ -67,7 +67,7 @@ const Initialrecipes = [
     author: 'Sarah Brown',
     authorImage: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png', // Example author image
     date: '2025-02-08',
-    views: 200,
+    views: 1,
     ingredients: [
       '1 cup flour',
       '1 cup milk',
@@ -89,7 +89,7 @@ const Initialrecipes = [
     author: 'Michael Scott',
     authorImage: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png', // Example author image
     date: '2025-02-07',
-    views: 175,
+    views: 1,
     ingredients: [
       '200g shrimp',
       '2 cloves garlic',
@@ -110,7 +110,7 @@ const Initialrecipes = [
     author: 'Emily Davis',
     authorImage: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png', 
     date: '2025-02-14',
-    views: 250, 
+    views: 1, 
     ingredients: [
       '1 cup flour',
       '1/2 cup sugar',
