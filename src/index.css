@@ -22,7 +22,7 @@ body {
 
 @layer utilities {
    .bg-hero {
-   @apply bg-[url('./assets/recipe-bg.png')] bg-bg bg-cover bg-center 
+   @apply bg-[url('/assets/recipe-bg.png')] bg-bg bg-cover bg-center 
   
   }
   .flex-hero{
